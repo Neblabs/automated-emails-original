@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+use AutomatedEmails\Original\Commands\CommandsRegistrator;
+use Symfony\Component\Console\Application;
+
+require_once 'bootstrap.php';
+require_once 'commands-bootstrap.php';
+
+$application = new Application();
+
+$commandsRegistartor = new CommandsRegistrator($application);
+
+$commandsRegistartor->register();
+
+$application->run();

@@ -1,0 +1,31 @@
+<?php
+
+namespace AutomatedEmails\Original\Deployment\Directories;
+
+use AutomatedEmails\Original\Characters\StringManager;
+use SplFileInfo;
+
+use function AutomatedEmails\Original\Utilities\Text\i;
+
+class File
+{
+    public function __construct(
+        protected SplFileInfo $file,
+        protected StringManager $basePath
+    ) {}
+    
+    public function relativePath() : StringManager
+    {
+        return $this->absolutePath()->replace($this->basePath, '')->trimLeft('/');
+    }
+
+    public function absolutePath() : StringManager
+    {
+        return i($this->file->getPathname())->replace('//', '/');
+    }
+
+    public function info() : SplFileInfo
+    {
+        return $this->file;     
+    }
+}
