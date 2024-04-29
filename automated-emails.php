@@ -20,20 +20,20 @@ use AutomatedEmails\Original\Environment\Env;
 use AutomatedEmails\Original\Files\RequireFileReader;
 
 use function AutomatedEmails\Original\Utilities\Collection\_a;
-//this
+
 /*
 Plugin Name: Automated Emails
 Plugin URI:  
 Description: Send e-mails when actions happen in your site.
-Version:      0.1
+Version:      0.1.1
 Author:       Neblabs
 Author URI:   https://neblabs.com
 Text Domain:  automated-emails
 Domain Path:  /international
 Requires at least: 4.7
 Requires PHP: 7.2
-License: Apache-2.0
-License URI: https://www.apache.org/licenses/LICENSE-2.0
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 require_once 'bootstrap.php';

@@ -2,10 +2,10 @@
 Contributors: neblabs
 Tags: email, automation, notification
 Requires at least: 4.7
-Tested up to: 6.3
-Stable tag: 0.1
+Tested up to: 6.5
+Stable tag: 0.1.1
 Requires PHP: 7.2
-License: GPLv2 or later
+License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Send custom emails when an action happens on your site, like when a new post is published.
@@ -47,6 +47,8 @@ This plugin allows you to add the data for current post and/or user to the email
         * user public name: ((user.nameDisplay | PostAuthor))
         * user id: ((user.id | PostAuthor))
         * user email: ((user.email | PostAuthor))
+
+GitHub: https://github.com/Neblabs/automated-emails-original
 
 == Frequently Asked Questions ==
 

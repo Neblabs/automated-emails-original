@@ -48,6 +48,7 @@ Class BuildManagerCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /*
         (object) $directories = new Directories(Env::settings()->directories);
         (object) $buildSettings = (new SettingsReader)->settings;
         (object) $fileSysytem = new ValidatableFilesystem(
@@ -94,7 +95,7 @@ Class BuildManagerCommand extends Command
 
 
 
-        return 1;
+        return 1;*/
 
         (object) $builder = new Builder($output);
 

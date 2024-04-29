@@ -11,7 +11,7 @@ return o(
         shortId: 'ae',
         namespace: 'AutomatedEmails',
         pluginFileName: 'automated-emails',
-        textDomain: 'automated-emails-international',
+        textDomain: 'automated-emails',
         translationFiles: o(
             production: 'international/automated-emails-international.pot',
             main: 'international/main-source.pot',
