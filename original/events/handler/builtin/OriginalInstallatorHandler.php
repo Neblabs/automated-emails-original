@@ -13,6 +13,6 @@ Class OriginalInstallatorHandler extends EventHandler
 
     public function execute()
     {
-        (object) $installator = new AppInstallation;
+        //(object) $installator = new AppInstallation;
     }
 }

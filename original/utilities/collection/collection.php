@@ -1,6 +1,8 @@
 <?php
 
 namespace AutomatedEmails\Original\Utilities\Collection {
+
+    use AutomatedEmails\Original\Abilities\GettableCollection;
     use AutomatedEmails\Original\Collections\Collection;
     use stdClass;
 
@@ -25,6 +27,10 @@ namespace AutomatedEmails\Original\Utilities\Collection {
 
     function o(...$array) : stdClass {
         return (object) a(...$array);
+    }
+
+    function get(GettableCollection $gettableCollection) : Collection {
+        return $gettableCollection->get();
     }
 }
 

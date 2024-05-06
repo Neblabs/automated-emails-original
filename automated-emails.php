@@ -5,11 +5,11 @@ use AutomatedEmails\Original\Cache\MemoryCache;
 use AutomatedEmails\Original\Collections\ByFileGettableCollection;
 use AutomatedEmails\Original\Collections\GettableCollectionDecorator;
 use AutomatedEmails\Original\Construction\Abilities\HandleableServiceExceptionFactory;
-use AutomatedEmails\Original\Construction\Core\DevelopmentServiceExceptionHandlerFactory;
-use AutomatedEmails\Original\Construction\Core\ProductionServiceExceptionHandlerFactory;
 use AutomatedEmails\Original\Construction\Dependency\ProductionDependenciesContainerFactory;
 use AutomatedEmails\Original\Construction\FactoryOverloader;
+use AutomatedEmails\Original\Construction\Objects\ObjectsFromClassStringsFactory;
 use AutomatedEmails\Original\Core\Application;
+use AutomatedEmails\Original\Core\Exceptions\Handlers\OriginalServiceExceptionHandlerFactoryTypes;
 use AutomatedEmails\Original\Core\Services\ActionsService;
 use AutomatedEmails\Original\Core\Services\DependenciesService;
 use AutomatedEmails\Original\Core\Services\MonitorService;
@@ -52,13 +52,21 @@ require_once 'bootstrap.php';
 
 require_once 'bootstrap.php';
 
-(object) $environmentFactory = new EnvironmentFactory;
-(object) $environment = $environmentFactory->create(Env::settings()->environment);
+(object) $environment = (new EnvironmentFactory)->create(Env::settings()->environment);
+(object) $requireFileReader = new RequireFileReader(new MemoryCache);
 
-(object) $overloadableServiceExceptionFactories = new FactoryOverloader(_a([
-    new DevelopmentServiceExceptionHandlerFactory,
-    new ProductionServiceExceptionHandlerFactory,
-]));
+(object) $overloadableServiceExceptionFactories = new FactoryOverloader(
+    AutomatedEmails\Original\Utilities\Construction\create(
+        new ObjectsFromClassStringsFactory(
+            \AutomatedEmails\Original\Utilities\Collection\get(
+                new ByFileGettableCollection(
+                    new OriginalServiceExceptionHandlerFactoryTypes,
+                    $requireFileReader
+                )
+            )
+        )
+    )
+);
 
 /** @var HandleableServiceExceptionFactory */
 (object) $serviceExceptionFactory = $overloadableServiceExceptionFactories->overload($environment);
@@ -74,15 +82,11 @@ $application->addService(
             new GettableCollectionDecorator(
                 new ByFileGettableCollection(
                     new OriginalDependencyTypes,
-                    new RequireFileReader(
-                        new MemoryCache
-                    )
+                    $requireFileReader
                 ),
                 new ByFileGettableCollection(
                     new AppDependencyTypes,
-                    new RequireFileReader(
-                        new MemoryCache
-                    )
+                    $requireFileReader
                 )
             )
         )

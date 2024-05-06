@@ -21,16 +21,16 @@ class RequireFileReader implements FileReader
     
     public function read(ReadableFile $readableFile): mixed
     {
-        return $this->cache->getIfExists('contents')->otherwise(
-            function() use($readableFile) {
+        return $this->cache->getIfExists($readableFile->source())->otherwise(
+            function(string $filePath) {
                 try {
                     //php 72...
-                    if (!file_exists($readableFile->source())) {
-                        throw  new \Exception("File not found: {$readableFile->source()}");
+                    if (!file_exists($filePath)) {
+                        throw  new \Exception("File not found: {$filePath}");
                     }
-                    return require $readableFile->source();
+                    return require $filePath;
                 } catch (Throwable $error) {
-                    return require $this->relativePathLowercased($readableFile->source());
+                    return require $this->relativePathLowercased($filePath);
                 }
             }
         );

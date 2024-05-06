@@ -16,8 +16,8 @@ Class ComposerClassMapReloaderScript extends Script
 
         print $outPut;
 
-        print "\nRemoving composer.json:\n";
-        var_dump(unlink("{$copyDirectoryName}/composer.json"));
+        //print "\nRemoving composer.json:\n";
+        //var_dump(unlink("{$copyDirectoryName}/composer.json"));
     }
     
 }

@@ -6,6 +6,7 @@ use AutomatedEmails\Original\Dependency\BuiltIn\HookFactoryDependency;
 use AutomatedEmails\Original\Dependency\BuiltIn\SubscriberFactoryDependency;
 use AutomatedEmails\Original\Dependency\BuiltIn\ErrorHandlerDependency;
 use AutomatedEmails\Original\Dependency\BuiltIn\WordPressPostReadableDriverDependency;
+use AutomatedEmails\Original\Dependency\BuiltIn\ObjectWrapperDependency;
 
 return [
     //The original deps,
@@ -15,4 +16,5 @@ return [
     SubscriberFactoryDependency::class,
     ErrorHandlerDependency::class,
     WordPressPostReadableDriverDependency::class,
+    ObjectWrapperDependency::class,
 ];

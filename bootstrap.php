@@ -7,6 +7,7 @@ use AutomatedEmails\Original\Environment\Env;
 require 'original/utilities/facades.php';
 require 'original/utilities/collection/collection.php';
 require 'original/utilities/text/text.php';
+require 'original/utilities/construction/construction.php';
 require 'original/utilities/callables/callables.php';
 require 'original/utilities/filters/filters.php';
 require 'original/environment/env.php';

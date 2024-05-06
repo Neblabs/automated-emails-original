@@ -4,13 +4,14 @@ namespace AutomatedEmails\Original\Construction;
 
 use AutomatedEmails\Original\Collections\Collection;
 use AutomatedEmails\Original\Collections\Validators\ItemsAreOnlyInstancesOf;
+use AutomatedEmails\Original\Construction\Abilities\Overloadable;
 use AutomatedEmails\Original\Construction\Abilities\OverloadableFactory;
 use Exception;
 
 use function AutomatedEmails\Original\Utilities\Collection\_;
 use function AutomatedEmails\Original\Utilities\validate;
 
-class FactoryOverloader
+class FactoryOverloader implements Overloadable
 {
     public function __construct(
         protected Collection $overloadableFactories

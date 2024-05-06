@@ -18,7 +18,7 @@ class WordPressDatabaseReadableDriverDependency implements Cached, StaticType, D
     
     static public function type(): string
     {
-        return WordPressDatabaseReadableDriver::class;   
+        return 'WordPressDatabaseReadableDriver::class';   
     } 
 
     public function canBeCreated(Context $context): bool
