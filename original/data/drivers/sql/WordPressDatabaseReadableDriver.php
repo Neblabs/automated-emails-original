@@ -24,13 +24,13 @@ class WordPressDatabaseReadableDriver implements SQLReadableDriver
     public function findMany(Parameters $parameters): Collection
     {
         return _($this->wordpressDatabaseWrapper->call(
-            method: 'get_results', 
-            query: $this->wordpressDatabaseWrapper->call(
+            'get_results', 
+            $this->wordpressDatabaseWrapper->call(
                 'prepare', 
                 $this->getQueryStringReplacedWithPrintfPlaceholders($parameters),
                 $parameters->queryValues()->asArray()
             ),
-            output: ARRAY_A
+            ARRAY_A
         ));            
     } 
 
@@ -38,13 +38,13 @@ class WordPressDatabaseReadableDriver implements SQLReadableDriver
     public function findOne(Parameters $parameters): array|null
     {
         return $this->wordpressDatabaseWrapper->call(
-            method: 'get_row', 
-            query: $this->wordpressDatabaseWrapper->call(
+            'get_row', 
+            $this->wordpressDatabaseWrapper->call(
                 'prepare', 
                 $this->getQueryStringReplacedWithPrintfPlaceholders($parameters),
                 $parameters->queryValues()->asArray()
             ), 
-            output: ARRAY_A
+            ARRAY_A
         );  
     } 
 

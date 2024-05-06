@@ -36,7 +36,6 @@ return [
     EventsFinderDependency::class,
     EventsDependency::class,
     WPDBDependency::class,
-    WordPressDatabaseReadableDriverDependency::class,
     EventStructureDependency::class,
     PassableCompositeConditionsMapperDependency::class,
     AutomatedEmailsFinderFactoryDependency::class,
